@@ -3,23 +3,19 @@ document.addEventListener( 'DOMContentLoaded', () => {
 } )
 
 const getPosts = () => {
-  let xhr = new XMLHttpRequest();
-  xhr.open( 'GET', 'http://localhost:3000/posts' );
-  xhr.addEventListener( 'load', e => {
-    JSON.parse( xhr.response )
-      .map( post => {
-
+  fetch( 'http://localhost:3000/posts' )
+    .then( response => response.json() )
+    .then( json => {
+      json.map( post => {
         createPost( post )
         post.comments.forEach( commentId => {
-
           createEmptyComment( commentId, post.id )
         } )
       } )
-
-    getComments()
-  } )
-  xhr.send();
+      getComments()
+    } )
 }
+
 
 const createPost = post => {
   let section = document.createElement( 'section' )
@@ -37,15 +33,13 @@ const createEmptyComment = ( commentId, postId ) => {
 }
 
 const getComments = () => {
-  let xhr = new XMLHttpRequest();
-  xhr.open( 'GET', `http://localhost:3000/comments` );
-  xhr.addEventListener( 'load', e => {
-    JSON.parse( xhr.response )
-      .map( comment => {
+  fetch( `http://localhost:3000/comments` )
+    .then( response => response.json() )
+    .then( json => {
+      json.map( comment => {
         updateCommentContent( comment )
       } )
-  } )
-  xhr.send();
+    } )
 }
 
 const updateCommentContent = comment => {
