@@ -27,7 +27,7 @@ describe( "index.js", () => {
 
     } );
 
-    it( "sends an fetch request to 'http://localhost:3000/posts'", async () => {
+    it( "sends a fetch request to 'http://localhost:3000/posts'", async () => {
       await getPosts()
       expect( window.fetch, "A fetch to the API was not found" )
         .to.have.been.called.with( 'http://localhost:3000/posts' );
