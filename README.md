@@ -7,10 +7,10 @@
 
 ## Introduction
 
-In the previous lesson, we briefly explored how `XMLHttpRequest`s can require to
+In the previous lesson, we briefly explored how `XMLHttpRequest`s can be required to
 do a bit of code nesting. When building web apps and pages, this sort of thing
 can happen a lot. Imagine you wanted to build an app that checked the weather,
-then, depending on the received data, checked for weather appropriate local
+then, depending on the received data, checked for weather-appropriate local
 events. One request for data is dependent on the other, requiring us to wait
 for the resolution of the first request before sending the next.
 
@@ -45,21 +45,27 @@ tests while also running the server, open a second tab in your terminal.
 ## Instructions
 
 Working code is already provided in `index.js`, but it currently implements
-XMLHttpRequests. Your task is to replace the existing XHR code with its fetch
+`XMLHttpRequest`s. Your task is to replace the existing XHR code with its fetch
 equivalent. Get all of the content rendering again using fetch in order to
 pass the tests.
 
-**Note:** Unlike `XMLHttpRequest`s, when a fetch request is completed, it returns
-a [Response][] object. Because fetch returns a [Promise][], we can access this
-Response object using `.then()`. Check out the [Using Fetch][] documentation
-for examples.
+**Note:** Unlike `XMLHttpRequest`s, when a `fetch()` request is completed, it returns
+a [Response][] object. Because `fetch()` returns a [Promise][], we can access this
+Response object using `.then()`. We'll be digging into `Promise` in the next few lessons.
+Check out the [Using Fetch][] documentation for examples. 
 
 ## Conclusion
 
-In regard to how we use it, fetch is similar enough to `XMLHttpRequest`s that we
+In regard to how we use it, `fetch()` is similar enough to `XMLHttpRequest`s that we
 can actually swap between them without requiring a lot of modifications to our
-code. With fetch, however, we can achieve the same results with less code. In
-addition, fetch provides additional features and a clear interface.
+code. With `fetch()`, however, we can achieve the same results with less code. In
+addition, `fetch()` provides additional features (like handling scenarios where one
+request, upon which another requests depends, fails).
+
+The key to what makes `fetch()` so clean is the `Promise` class. `Promise`s can be used
+in many places but networking is a very natural starting point. Since `Promise` was introduced
+to JavaScript engines it has proliferated greatly. Let's see how `Promise` makes `fetch()` so
+smooth!
 
 ## Resources
 
